@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supply Side Story — Production Decisions Post-Pandemic</title>
+  <meta name="description" content="An interactive educational story about how factories shift production from masks to fashion wear — exploring supply-side economics.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="main-nav" role="navigation" aria-label="Section navigation">
+  <div class="nav-logo">Supply<span>Side</span> Story</div>
+
+  <ul class="nav-links">
+    <li><a href="#s1"><span class="nav-dot"></span>Market Shock</a></li>
+    <li><a href="#s2"><span class="nav-dot"></span>Profit & Cost</a></li>
+    <li><a href="#s3"><span class="nav-dot"></span>Production Shift</a></li>
+    <li><a href="#s4"><span class="nav-dot"></span>Market Impact</a></li>
+  </ul>
+
+  <div class="nav-presenter">
+    <span>Now presenting:</span>
+    <span class="presenter-badge" id="presenter-badge">
+      <span id="presenter-badge-text">Intro</span>
+    </span>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero" aria-label="Introduction">
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+
+  <div class="hero-tag" aria-label="Topic category">
+    📦 Supply Side Economics · Production Decisions
+  </div>
+
+  <h1 class="hero-title">
+    When the <em>World Changed</em>,<br>
+    so did the Factory Floor
+  </h1>
+
+  <p class="hero-sub">
+    A mask factory in 2020 was printing money. By 2023, it was bleeding losses.
+    This is the story of how economics forced a production decision — and what happened next.
+  </p>
+
+  <!-- Year timeline strip -->
+  <div class="hero-timeline" aria-label="Story timeline" role="list">
+    <div class="tl-year active" role="listitem">2020</div>
+    <div class="tl-arrow" aria-hidden="true"></div>
+    <div class="tl-year" role="listitem">2021</div>
+    <div class="tl-arrow" aria-hidden="true"></div>
+    <div class="tl-year" role="listitem">2022</div>
+    <div class="tl-arrow" aria-hidden="true"></div>
+    <div class="tl-year" role="listitem">2023</div>
+  </div>
+
+  <div class="hero-scroll-cue" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 1 — MARKET SHOCK (Speaker 1)
+     ============================================================ -->
+<section id="s1" class="section" aria-labelledby="s1-title">
+  <div class="section-inner">
+
+    <!-- Section header -->
+    <div class="section-badge reveal" style="--badge-color: var(--s1-accent);">
+      <span class="badge-num">01</span>
+      Speaker 1 · Market Shock
+    </div>
+
+    <h2 id="s1-title" class="section-title reveal" data-delay="1">
+      The <em>Demand Cliff</em><br>that changed everything
+    </h2>
+
+    <p class="section-subtitle reveal" data-delay="2">
+      In 2020, demand for masks exploded. By 2023, the same product became nearly worthless.
+      Drag the slider to see how the demand curve shifted — and what it did to market price.
+    </p>
+
+    <!-- Two-column layout -->
+    <div class="s1-layout">
+
+      <!-- LEFT: Interactive demand graph -->
+      <div class="reveal" data-delay="2">
+        <div class="graph-card">
+          <div class="graph-label">📈 Mask Market — Demand Curve Shift</div>
+
+          <!-- Canvas -->
+          <div id="demand-canvas-wrap">
+            <canvas id="demand-canvas" role="img" aria-label="Interactive demand shift graph showing price vs quantity for masks from 2020 to 2023"></canvas>
+          </div>
+
+          <!-- Year slider -->
+          <div class="slider-wrap">
+            <div class="slider-label">
+              <span>Drag to change year</span>
+              <span class="slider-year-val" id="year-display">2020</span>
+            </div>
+            <input
+              type="range"
+              id="year-slider"
+              min="2020"
+              max="2023"
+              step="1"
+              value="2020"
+              aria-label="Year slider — drag to see demand curve shift"
+            />
+            <div class="slider-label" style="margin-top: 6px;">
+              <span>2020</span><span>2021</span><span>2022</span><span>2023</span>
+            </div>
+          </div>
+
+          <!-- Stats grid -->
+          <div class="stat-grid">
+            <div class="stat-card highlight" id="stat-card-price">
+              <div class="stat-label">Market Price</div>
+              <div class="stat-value" id="stat-price">₹420 / box</div>
+              <div class="stat-delta down" id="stat-delta-price">+280% vs pre-pandemic</div>
+            </div>
+            <div class="stat-card" id="stat-card-sent">
+              <div class="stat-label">Market Mood</div>
+              <div class="stat-value" style="font-size:1.1rem;" id="stat-sentiment">PANIC BUYING</div>
+              <div class="stat-delta up" id="stat-delta-qty">+340% volume surge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Context cards -->
+      <div class="context-cards reveal" data-delay="3">
+
+        <div class="ctx-card">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">🦠</span>
+            <span class="ctx-title">2020: Demand Surge</span>
+          </div>
+          <p class="ctx-body">
+            COVID-19 caused an unprecedented demand spike. Governments, hospitals, and consumers competed for masks.
+            <strong>Demand curve shifted massively right.</strong> Price tripled overnight.
+          </p>
+        </div>
+
+        <div class="ctx-card alert">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">💉</span>
+            <span class="ctx-title">2021–22: The Turn</span>
+          </div>
+          <p class="ctx-body">
+            Vaccines reduced fear. Mandates lifted. Consumers stopped stockpiling.
+            <strong>Demand softened rapidly.</strong> Yet factories had expanded capacity — setting up oversupply.
+          </p>
+        </div>
+
+        <div class="ctx-card info">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">📉</span>
+            <span class="ctx-title">2023: The Collapse</span>
+          </div>
+          <p class="ctx-body">
+            Demand settled at a permanently lower level. Hundreds of new factories (supply) entered during the boom.
+            <strong>Result: Classic demand-led price collapse.</strong>
+            Prices fell 74% from peak.
+          </p>
+        </div>
+
+        <div class="ctx-card good">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">💡</span>
+            <span class="ctx-title">Key Economic Concept</span>
+          </div>
+          <p class="ctx-body">
+            <strong>Demand shift ≠ movement along the curve.</strong>
+            When consumer preferences change, the entire curve moves. The equilibrium price and quantity both change —
+            even if producers don't change their costs.
+          </p>
+        </div>
+
+      </div><!-- /context-cards -->
+    </div><!-- /s1-layout -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 2 — PROFIT & COST (Speaker 2)
+     ============================================================ -->
+<section id="s2" class="section" aria-labelledby="s2-title">
+  <div class="section-inner">
+
+    <div class="section-badge reveal">
+      <span class="badge-num">02</span>
+      Speaker 2 · Profit & Cost
+    </div>
+
+    <h2 id="s2-title" class="section-title reveal" data-delay="1">
+      The Numbers that <em>forced the choice</em>
+    </h2>
+
+    <p class="section-subtitle reveal" data-delay="2">
+      Toggle between scenarios to compare the economics. When does staying in masks stop making sense?
+      And what does opportunity cost actually mean here?
+    </p>
+
+    <!-- Toggle group -->
+    <div class="toggle-group reveal" data-delay="2" role="group" aria-label="Select production scenario">
+      <button class="tog-btn active" data-scenario="masks2020" aria-pressed="true">😷 Masks (2020)</button>
+      <button class="tog-btn" data-scenario="masks2023" aria-pressed="false">📉 Masks (2023)</button>
+      <button class="tog-btn" data-scenario="fashion2023" aria-pressed="false">👗 Fashion (2023)</button>
+    </div>
+
+    <!-- Profit layout -->
+    <div class="profit-layout">
+
+      <!-- LEFT: Waterfall chart -->
+      <div class="reveal" data-delay="2">
+        <div class="waterfall-wrap">
+          <div class="graph-label">💰 Revenue → Cost → Profit (per unit, ₹)</div>
+          <canvas id="waterfall-canvas" role="img" aria-label="Waterfall chart showing revenue, costs, and profit per unit"></canvas>
+          <p id="profit-note" style="margin-top:16px; font-size:0.78rem; color:var(--muted); line-height:1.6;"></p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Breakdown table + Opportunity cost -->
+      <div class="reveal" data-delay="3">
+        <div class="profit-table" role="table" aria-label="Cost breakdown per unit">
+          <div class="pt-row header" role="row">
+            <span role="columnheader">Item</span>
+            <span role="columnheader">Per Unit (₹)</span>
+          </div>
+          <div class="pt-row" role="row">
+            <span class="pt-label" role="cell">💵 Revenue</span>
+            <span class="pt-val" id="pt-revenue" role="cell">—</span>
+          </div>
+          <div class="pt-row" role="row">
+            <span class="pt-label" role="cell">🧵 Raw Material</span>
+            <span class="pt-val" id="pt-rawmat" role="cell">—</span>
+          </div>
+          <div class="pt-row" role="row">
+            <span class="pt-label" role="cell">👷 Labour</span>
+            <span class="pt-val" id="pt-labour" role="cell">—</span>
+          </div>
+          <div class="pt-row" role="row">
+            <span class="pt-label" role="cell">🏭 Overhead</span>
+            <span class="pt-val" id="pt-overhead" role="cell">—</span>
+          </div>
+          <div class="pt-row total profit-row" role="row">
+            <span class="pt-label" role="cell"><strong>📊 Net Profit</strong></span>
+            <span class="pt-val" id="pt-profit" role="cell">—</span>
+          </div>
+        </div>
+
+        <!-- Opportunity cost callout -->
+        <div class="opp-cost-box" style="margin-top: 20px;">
+          <div class="opp-title">Opportunity Cost of NOT switching</div>
+          <div class="opp-value" id="opp-value">₹0</div>
+          <p class="opp-desc" id="opp-desc"></p>
+        </div>
+
+        <!-- Concept reminder -->
+        <div class="ctx-card info" style="margin-top: 16px;">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">📚</span>
+            <span class="ctx-title">Opportunity Cost — Defined</span>
+          </div>
+          <p class="ctx-body">
+            The value of the <strong>next best alternative forgone</strong>.
+            In 2023, every box of masks produced costs the factory not just ₹140 in direct costs,
+            but also the ₹260 margin they <em>could</em> be earning on fashion wear.
+          </p>
+        </div>
+
+      </div>
+    </div><!-- /profit-layout -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3 — PRODUCTION SHIFT (Speaker 3)
+     ============================================================ -->
+<section id="s3" class="section" aria-labelledby="s3-title">
+  <div class="section-inner">
+
+    <div class="section-badge reveal">
+      <span class="badge-num">03</span>
+      Speaker 3 · Production Shift
+    </div>
+
+    <h2 id="s3-title" class="section-title reveal" data-delay="1">
+      Moving the <em>Factors of Production</em>
+    </h2>
+
+    <p class="section-subtitle reveal" data-delay="2">
+      The factory doesn't magically switch overnight. Land, Labour, and Capital must all be reallocated.
+      This is where theory meets real-world friction.
+    </p>
+
+    <!-- Resource flow: Before → After -->
+    <div class="sub-heading reveal" data-delay="1">Resource Reallocation — Before vs. After</div>
+
+    <div class="flow-layout reveal" data-delay="2">
+
+      <!-- BEFORE: Mask Production -->
+      <div class="flow-col">
+        <div class="flow-col-title">😷 Before — Mask Production</div>
+
+        <div class="resource-item labor">
+          <span class="res-icon">👥</span>
+          <div class="res-info">
+            <div class="res-name">Labour</div>
+            <div class="res-detail">400 workers on mask assembly lines</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar before" data-resource="labour" data-pct="95" style="width:0%; background:var(--s1-accent);"></div>
+            </div>
+          </div>
+          <span class="realloc-pct" data-resource="labour" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);">0%</span>
+        </div>
+
+        <div class="resource-item capital">
+          <span class="res-icon">⚙️</span>
+          <div class="res-info">
+            <div class="res-name">Capital</div>
+            <div class="res-detail">Ultrasonic welding machines, cutting dies</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar before" data-resource="capital" data-pct="90" style="width:0%; background:var(--s3-accent);"></div>
+            </div>
+          </div>
+          <span class="realloc-pct" data-resource="capital" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);">0%</span>
+        </div>
+
+        <div class="resource-item land">
+          <span class="res-icon">🏭</span>
+          <div class="res-info">
+            <div class="res-name">Land / Space</div>
+            <div class="res-detail">12,000 sq ft factory floor (Surat)</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar before" data-resource="land" data-pct="100" style="width:0%; background:var(--s4-accent);"></div>
+            </div>
+          </div>
+          <span class="realloc-pct" data-resource="land" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);">100%</span>
+        </div>
+      </div>
+
+      <!-- Arrow column -->
+      <div class="flow-arrow-col" aria-hidden="true">
+        <div class="flow-arrow-anim">→</div>
+        <div class="flow-arrow-label">Retooling</div>
+      </div>
+
+      <!-- AFTER: Fashion Production -->
+      <div class="flow-col">
+        <div class="flow-col-title">👗 After — Fashion Wear</div>
+
+        <div class="resource-item labor">
+          <span class="res-icon">🎨</span>
+          <div class="res-info">
+            <div class="res-name">Labour (Retrained)</div>
+            <div class="res-detail">Tailoring, stitching, QC — 6-week upskilling</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar after" data-resource="labour" data-pct="8" style="width:0%;"></div>
+            </div>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--s3-accent);">87% retrained</span>
+        </div>
+
+        <div class="resource-item capital">
+          <span class="res-icon">🪡</span>
+          <div class="res-info">
+            <div class="res-name">Capital (Retooled)</div>
+            <div class="res-detail">Industrial sewing machines, fabric cutters</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar after" data-resource="capital" data-pct="15" style="width:0%;"></div>
+            </div>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--s3-accent);">75% retooled</span>
+        </div>
+
+        <div class="resource-item land">
+          <span class="res-icon">✅</span>
+          <div class="res-info">
+            <div class="res-name">Land (Unchanged)</div>
+            <div class="res-detail">Same factory — different layout & zoning</div>
+            <div class="res-bar-wrap">
+              <div class="res-bar after" data-resource="land" data-pct="100" style="width:0%;"></div>
+            </div>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--s4-accent);">No cost</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transition steps -->
+    <div class="sub-heading reveal" data-delay="1" style="margin-top: 40px;">The Transition Playbook — 4 Steps</div>
+
+    <div class="steps-list reveal" data-delay="2">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Market signal received:</strong> Price of masks falls below break-even (₹110 vs cost of ₹140).
+          The factory owner compares alternatives — fashion wear shows a ₹260+ margin opportunity.
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Capital retooling:</strong> Mask welding machines are sold or repurposed.
+          Industrial sewing machines are leased. Initial retooling cost: ~₹18 lakh (amortized over 3 years).
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Labour retraining:</strong> Workers attend a 6-week intensive stitching and pattern-cutting course
+          subsidized through PMKVY. Some workers leave; new skilled tailors are hired.
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>New production begins:</strong> First fashion batch ships in Month 3. By Month 6,
+          the factory operates at 70% of target capacity. <em>Economies of scale kick in below.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Economies of Scale -->
+    <div class="sub-heading reveal" data-delay="1">Economies of Scale — Fashion Wear Output</div>
+
+    <div class="eos-layout reveal" data-delay="2">
+
+      <!-- Chart -->
+      <div class="eos-card">
+        <div class="graph-label">📉 Average Total Cost as Output Increases</div>
+
+        <div class="slider-wrap" style="margin-bottom:20px;">
+          <div class="slider-label">
+            <span>Output level</span>
+            <span id="eos-q-label" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--s3-accent);">2,000 units / month</span>
+          </div>
+          <input
+            type="range"
+            id="eos-slider"
+            min="500"
+            max="10000"
+            step="250"
+            value="2000"
+            aria-label="Output slider — drag to see economies of scale effect on average total cost"
+          />
+          <div class="slider-label" style="margin-top:6px;">
+            <span>500 units</span><span>10,000 units</span>
+          </div>
+        </div>
+
+        <div class="eos-canvas-wrap">
+          <canvas id="eos-canvas" role="img" aria-label="Economies of scale chart — ATC vs output quantity"></canvas>
+        </div>
+
+        <p style="margin-top:12px; font-size:0.73rem; color:var(--muted); line-height:1.6;">
+          ⚠️ <em>Simplification:</em> Real ATC curves eventually rise (diseconomies of scale).
+          We show a slight uptick after ~8,000 units. Fixed cost = ₹5,00,000/month; Variable cost = ₹180/unit.
+        </p>
+      </div>
+
+      <!-- EoS stat panel -->
+      <div class="eos-stat-col">
+
+        <div class="eos-stat">
+          <div class="eos-stat-label">Current Output</div>
+          <div class="eos-stat-val" id="eos-qty">2,000 units</div>
+          <div class="eos-stat-desc">garments per month</div>
+        </div>
+
+        <div class="eos-stat">
+          <div class="eos-stat-label">Avg. Total Cost</div>
+          <div class="eos-stat-val" id="eos-atc">₹430</div>
+          <div class="eos-stat-desc">per garment at this output</div>
+        </div>
+
+        <div class="eos-stat">
+          <div class="eos-stat-label">Fixed Cost / Unit</div>
+          <div class="eos-stat-val" id="eos-fixed">₹250</div>
+          <div class="eos-stat-desc">shrinks as output rises</div>
+        </div>
+
+        <div class="eos-stat">
+          <div class="eos-stat-label">Cost Saved vs Min</div>
+          <div class="eos-stat-val" id="eos-savings">₹0</div>
+          <div class="eos-stat-desc">vs producing only 500 units</div>
+        </div>
+
+        <div class="ctx-card good" style="border-left-color: var(--s3-accent); margin-top: 8px;">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">📐</span>
+            <span class="ctx-title">Why ATC Falls</span>
+          </div>
+          <p class="ctx-body">
+            Fixed costs (rent, machines) are <strong>spread over more units</strong>.
+            Each garment "carries" a smaller share of fixed costs as production scales up.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4 — MARKET IMPACT (Speaker 4)
+     ============================================================ -->
+<section id="s4" class="section" aria-labelledby="s4-title">
+  <div class="section-inner">
+
+    <div class="section-badge reveal">
+      <span class="badge-num">04</span>
+      Speaker 4 · Market Impact
+    </div>
+
+    <h2 id="s4-title" class="section-title reveal" data-delay="1">
+      The <em>New Equilibrium</em><br>— and who wins
+    </h2>
+
+    <p class="section-subtitle reveal" data-delay="2">
+      What happens to the overall market when supply shifts? Toggle between the mask market and the fashion market
+      to see how supply changes move the equilibrium — and what it means for producers and consumers.
+    </p>
+
+    <!-- Supply toggle -->
+    <div class="supply-toggle reveal" data-delay="2" role="group" aria-label="Select market to view">
+      <button class="supply-tog-btn active" data-market="masks">😷 Mask Market</button>
+      <button class="supply-tog-btn" data-market="fashion">👗 Fashion Market</button>
+    </div>
+
+    <!-- Supply layout -->
+    <div class="supply-layout">
+
+      <!-- LEFT: Supply graph -->
+      <div class="reveal" data-delay="2">
+        <div class="graph-card">
+          <div class="graph-label">📊 Supply & Demand — Equilibrium Shift</div>
+          <canvas id="supply-canvas" role="img" aria-label="Supply and demand graph showing equilibrium movement"></canvas>
+
+          <div style="margin-top: 16px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;color:var(--muted);">
+              <div style="width:20px;height:2px;background:rgba(100,160,255,0.7);"></div> Original curves
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;color:var(--muted);">
+              <div style="width:20px;height:2px;background:var(--s4-accent);"></div> Shifted curves
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;color:var(--muted);">
+              <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,200,100,0.7);"></div> Old equilibrium (E₁)
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.72rem;color:var(--muted);" id="eq-legend-new">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--s4-accent);"></div> New equilibrium (E₂)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Equilibrium stats -->
+      <div class="eq-stats reveal" data-delay="3">
+
+        <div class="eq-stat">
+          <div class="eq-stat-label">Market Story</div>
+          <div style="font-size:0.85rem;line-height:1.6;" id="eq-story">Analyzing market shift...</div>
+        </div>
+
+        <div class="eq-stat highlight">
+          <div class="eq-stat-label">New Equilibrium Price</div>
+          <div class="eq-stat-val" id="eq-price-new" style="color:var(--white);">—</div>
+          <div class="eq-stat-change" id="eq-price-delta"></div>
+        </div>
+
+        <div class="eq-stat">
+          <div class="eq-stat-label">Welfare Analysis</div>
+          <div style="font-size:0.83rem;line-height:1.6;margin-top:4px;" id="eq-welfare">—</div>
+        </div>
+
+        <!-- Long-run insight -->
+        <div class="lr-insight">
+          <div class="lr-insight-title">
+            🔭 Long-Run Perspective
+          </div>
+          <p>
+            In the <strong>long run</strong>, firms enter and exit markets until economic profit → zero.
+            The fashion boom will attract new competitors, eventually compressing margins again.
+            <em>The cycle restarts — which is why continuous innovation matters.</em>
+          </p>
+        </div>
+
+        <!-- Key concepts recap -->
+        <div class="ctx-card good">
+          <div class="ctx-card-head">
+            <span class="ctx-icon">🎯</span>
+            <span class="ctx-title">Supply Shift — Recap</span>
+          </div>
+          <p class="ctx-body">
+            A supply shift (S₁→S₂) means <strong>producers are willing to supply more at every price.</strong>
+            When demand holds steady, a rightward supply shift lowers equilibrium price and raises quantity.
+            In masks, demand also fell — causing an even sharper price collapse.
+          </p>
+        </div>
+
+      </div><!-- /eq-stats -->
+    </div><!-- /supply-layout -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div>
+      <div class="footer-brand">Supply<span>Side</span> Story</div>
+      <p class="footer-desc" style="margin-top: 8px;">
+        An interactive educational resource exploring production decisions
+        through the lens of post-pandemic supply-side economics.
+      </p>
+      <p class="footer-desc" style="margin-top: 12px;">
+        Built for classroom use. All economic data is illustrative.
+      </p>
+    </div>
+
+    <!-- Presenters -->
+    <div>
+      <div class="footer-section-title">Presentation Sections</div>
+      <ul class="presenter-list">
+        <li>
+          <span class="presenter-dot" style="background:var(--s1-accent);"></span>
+          <span><strong>Speaker 1</strong> — Market Shock (Demand Shift)</span>
+        </li>
+        <li>
+          <span class="presenter-dot" style="background:var(--s2-accent);"></span>
+          <span><strong>Speaker 2</strong> — Profit & Opportunity Cost</span>
+        </li>
+        <li>
+          <span class="presenter-dot" style="background:var(--s3-accent);"></span>
+          <span><strong>Speaker 3</strong> — Production Shift & EoS</span>
+        </li>
+        <li>
+          <span class="presenter-dot" style="background:var(--s4-accent);"></span>
+          <span><strong>Speaker 4</strong> — Market Impact & Equilibrium</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Notes -->
+    <div>
+      <div class="footer-section-title">Economic Notes</div>
+      <p class="footnotes">
+        All figures are stylized and pedagogically chosen for intuitive understanding.
+        Price points are loosely based on Indian textile & PPE markets (2020–2023).
+        Supply/demand curves use linear simplifications. Real markets are more complex.
+        <br><br>
+        Concepts covered: Demand shift, Supply shift, Price mechanism,
+        Opportunity cost, Economies of scale, Resource allocation, Market equilibrium.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2024 Supply Side Story — Educational Use</span>
+    <span style="font-family:var(--font-mono); font-size:0.68rem;">
+      Built with HTML · CSS · Vanilla JS
+    </span>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS (ES Modules)
+     ============================================================ -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

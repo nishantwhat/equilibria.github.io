@@ -288,4 +288,3 @@ supply-side-story/
 | Canvas is blurry | Resize browser window once to trigger DPR recalculation |
 | Sliders not responding | Click once on the slider, then use arrow keys |
 | Mobile layout looks off | Site is optimized for 1024px+; mobile is supported but desktop is preferred for presenting |
-# equilibria.github.io
